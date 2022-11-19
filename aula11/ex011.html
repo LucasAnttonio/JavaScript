@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você é Brasileiro?</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Qual país você nasceu?</h1>
+    <input type="text" name="pais" id="pais" placeholder="Em que páis você nasceu?">
+    <input type="submit" value="Enviar" onclick="enviar()">
+    <div id="res"></div>
+
+    <script>
+        function enviar() {
+            var res = document.querySelector('div#res')
+            var país = document.querySelector('input#pais').value.toLowerCase()
+
+            res.innerHTML = `<p>Nascendo em <strong>${primeiraLetraMaiuscula(país)}</strong>.</p>`
+
+            if (país == 'brasil') {
+                res.innerHTML += `<p>Você é Brasileiro!</p>`
+            } else {
+                res.innerHTML += `<p>Você é Estrangeiro!</p>`
+            }
+        }
+
+        function primeiraLetraMaiuscula(value) {
+            return value[0].toUpperCase() + value.substring(1)
+        }
+    </script>
+</body>
+
+</html>
