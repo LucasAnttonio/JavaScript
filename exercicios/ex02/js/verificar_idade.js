@@ -1,40 +1,45 @@
-var sexof = document.querySelector('input#sexof')
+var sexof = document.querySelector('input#femi')
 var btnVerificar = document.querySelector('input#verificar')
-var img = document.querySelector('img#perfil')
 var txtIdade = document.querySelector('p#idade')
+var img = document.createElement('img')
+img.setAttribute('id', 'foto')
 
 btnVerificar.addEventListener('click', verificar)
 
 function verificar() {
+    var res = document.querySelector("div#res")
     var ano = Number(document.querySelector('input#ano').value)
     var anoAtual = new Date().getFullYear()
 
     if (ano < anoAtual && ano >= 1900) {
         var idade = Number(anoAtual) - Number(ano)
-        
-        img.style.display = "block"
+        var genero = ''
 
         if (sexof.checked) { // feminino
-            txtIdade.innerHTML = `Detectamos Mulher com ${idade} anos.`
+            genero = "Mulher"
 
             if (idade < 18) { //jovem
-                img.src = "./image/mulher_jovem.jpg"
+                img.setAttribute("src", "./image/mulher_jovem.jpg")
             } else if (idade < 70) { // adulto
-                img.src = "./image/mulher_adulta.jpg"
+                img.setAttribute("src", "./image/mulher_adulta.jpg")
             } else { // idoso   
-                img.src = "./image/mulher_idosa.jpg"
-            } 
+                img.setAttribute("src", "./image/mulher_idosa.jpg")
+            }
         } else { // masculino
-            txtIdade.innerHTML = `Detectamos Homem com ${idade} anos.`
+            genero = "Homem"
 
             if (idade < 18) { //jovem
-                img.src = "./image/homem_jovem.jpg"
+                img.setAttribute("src", "./image/homem_jovem.jpg")
             } else if (idade < 70) { // adulto
-                img.src = "./image/homem_adulto.jpg"
+                img.setAttribute("src", "./image/homem_adulto.jpg")
             } else { // idoso   
-                img.src = "./image/homem_idoso.jpg"
-            } 
+                img.setAttribute("src", "./image/homem_idoso.jpg")
+            }
         }
+
+        txtIdade.innerHTML = `Detectamos ${genero} com ${idade} anos.`
+
+        res.appendChild(img)
     } else { // Error
         alert("[ERRO] Verifique os dados novamente!")
     }
