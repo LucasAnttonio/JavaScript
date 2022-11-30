@@ -11,13 +11,19 @@ function contar() {
     let fim = Number(txtFim.value);
     let passo = Number(txtPasso.value);
 
-    if (passo >= 1) {
-        res.innerHTML = "Contanto: <br>";
-        for (let i = inicio; i <= fim; i += passo) {
-            res.innerHTML += `${i} -> `;
-        }
-        res.innerHTML += " fim";
-    } else {
-        alert('Passo tem que ser maior que 0!')
+    if (txtInicio.value === '' || txtFim.value === '') {
+        res.innerHTML = 'Impossível contar!';
+        return;
     }
+
+    if (passo === 0) {
+        passo = 1;
+        alert('Passo inválido! Considerando passo igual a 1!');
+    }
+
+    res.innerHTML = 'Contanto: <br>';
+    for (let i = inicio; i <= fim; i += passo) {
+        res.innerHTML += `${i} &#x1F449; `;
+    }
+    res.innerHTML += ' &#x1F3C1;';
 }
