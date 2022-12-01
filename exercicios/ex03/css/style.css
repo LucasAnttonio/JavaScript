@@ -25,7 +25,7 @@ section {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.363);
 }
 
-input {
+input[type=number] {
     width: 130px;
     margin: 10px 0;
 }
