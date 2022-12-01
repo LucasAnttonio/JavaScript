@@ -16,13 +16,13 @@
 
     <section>
         <div>
-            Início: <input type="number" name="inicio" id="inicio"><br>
-            Fim: <input type="number" name="fim" id="fim"><br>
-            Passo: <input type="number" name="passo" id="passo" min="1"><br>
-            <input type="button" value="Contar" id="contar">
+            <p>Início: <input type="number" name="inicio" id="inicio"></p>
+            <p>Fim: <input type="number" name="fim" id="fim"></p>
+            <p>Passo: <input type="number" name="passo" id="passo" min="1"></p>
+            <input type="button" value="Contar" id="contar" onclick="contar()">
         </div>
-        <div>
-            <p id="res">Preparando contagem...</p>
+        <div id="contando">
+            Preparando contagem...
         </div>
     </section>
 

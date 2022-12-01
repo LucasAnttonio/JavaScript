@@ -1,29 +1,26 @@
-let txtInicio = document.querySelector('input#inicio');
-let txtFim = document.querySelector('input#fim')
-let txtPasso = document.querySelector('input#passo')
-let btnContar = document.querySelector('input#contar');
-let res = document.querySelector('p#res');
-
-btnContar.addEventListener('click', contar);
-
 function contar() {
-    let inicio = Number(txtInicio.value);
-    let fim = Number(txtFim.value);
-    let passo = Number(txtPasso.value);
+    let inicio = document.querySelector('input#inicio');
+    let fim = document.querySelector('input#fim')
+    let passo = document.querySelector('input#passo')
+    let contando = document.querySelector('div#contando');
 
-    if (txtInicio.value === '' || txtFim.value === '') {
-        res.innerHTML = 'Impossível contar!';
+    if (inicio.value === '' || fim.value === '') {
+        contando.innerHTML = 'Impossível contar!';
         return;
     }
 
-    if (passo === 0) {
+    inicio = Number(inicio.value);
+    fim = Number(fim.value);
+    passo = Number(passo.value);
+
+    if (passo <= 0) {
         passo = 1;
         alert('Passo inválido! Considerando passo igual a 1!');
     }
 
-    res.innerHTML = 'Contanto: <br>';
-    for (let i = inicio; i <= fim; i += passo) {
-        res.innerHTML += `${i} &#x1F449; `;
+    contando.innerHTML = 'Contanto: <br>';
+    for (let i = inicio; inicio > fim ? i >= fim : i <= fim; inicio > fim ? i -= passo : i += passo) {
+        contando.innerHTML += `${i} \u{1F449} `;
     }
-    res.innerHTML += ' &#x1F3C1;';
+    contando.innerHTML += ' \u{1F3C1}';
 }
