@@ -10,18 +10,13 @@ function gerarTabuada() {
         return;
     }
 
-    for (let i = tabuada.options.length - 1; i >= 0; i--) {
-        tabuada.options.remove(i);
-    }
+    tabuada.innerHTML = '';
 
     let num = Number(numTabuada.value);
 
     for (let i = 1; i <= 10; i++) {
-        let res = num * i;
-
         let option = document.createElement('option');
-        option.value = res;
-        option.text = `${num} x ${i} = ${res}`;
+        option.text = `${num} x ${i} = ${num * i}`;
         tabuada.appendChild(option);
     }
 }
